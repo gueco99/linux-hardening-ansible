@@ -1,0 +1,11 @@
+---
+- name: Instalar Lynis
+  apt:
+    name: lynis
+    state: present
+    update_cache: yes
+
+- name: Ejecutar auditoría de seguridad con Lynis
+  shell: lynis audit system --quiet > /var/log/lynis-report.txt
+  args:
+    creates: /var/log/lynis-report.txt

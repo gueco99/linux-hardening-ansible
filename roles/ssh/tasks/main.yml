@@ -1,0 +1,17 @@
+---
+- name: Asegurar configuración de SSH
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    backrefs: yes
+  loop:
+    - { regexp: '^#?Port\s+.*', line: 'Port 2222' }
+    - { regexp: '^#?PermitRootLogin\s+.*', line: 'PermitRootLogin no' }
+    - { regexp: '^#?PasswordAuthentication\s+.*', line: 'PasswordAuthentication no' }
+
+- name: Reiniciar servicio SSH para aplicar cambios
+  service:
+    name: ssh
+    state: restarted

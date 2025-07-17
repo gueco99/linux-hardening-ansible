@@ -1,0 +1,12 @@
+---
+- name: Instalar fail2ban
+  apt:
+    name: fail2ban
+    state: present
+    update_cache: yes
+
+- name: Asegurar que fail2ban está activo y habilitado
+  service:
+    name: fail2ban
+    state: started
+    enabled: true

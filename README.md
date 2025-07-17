@@ -30,7 +30,7 @@ Aplica buenas prácticas de ciberseguridad para reforzar el sistema frente a acc
 
 ## 🚀 ¿Cómo usar este playbook?
 
-### 1. Cloná el repositorio
+### 1. Clona el repositorio
 
 ```bash
 git clone https://github.com/tu_usuario/linux-hardening-ansible.git

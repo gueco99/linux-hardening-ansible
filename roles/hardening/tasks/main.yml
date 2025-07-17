@@ -1,0 +1,25 @@
+---
+- name: Asegurar que UFW esté instalado
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Activar UFW (firewall)
+  ufw:
+    state: enabled
+    policy: deny
+    
+- name: Deshabilitar servicio Avahi
+  service:
+    name: avahi-daemon
+    state: stopped
+    enabled: no
+  ignore_errors: yes
+
+- name: Deshabilitar servicio CUPS
+  service:
+    name: cups
+    state: stopped
+    enabled: no
+  ignore_errors: yes

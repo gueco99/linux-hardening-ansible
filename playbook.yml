@@ -1,0 +1,7 @@
+---
+- name: Aplicar hardening a servidores Linux
+  hosts: servidores
+  become: true
+
+  roles:
+    - hardening

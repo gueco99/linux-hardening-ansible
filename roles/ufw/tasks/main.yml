@@ -1,0 +1,21 @@
+---
+- name: Instalar UFW si no está presente
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Permitir puerto 2222 para SSH
+  ufw:
+    rule: allow
+    port: 2222
+    proto: tcp
+
+- name: Denegar todo por defecto (excepto lo permitido)
+  ufw:
+    direction: incoming
+    policy: deny
+
+- name: Activar UFW (si no está activo)
+  ufw:
+    state: enabled
